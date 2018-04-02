@@ -8,6 +8,8 @@ sys_path: .
 # http://stacker.readthedocs.io/en/latest/config.html#s3-bucket
 stacker_bucket: ${stacker_bucket}
 
+namespace: ${namespace}
+
 mappings:
   AmiMap:
     us-east-1:
@@ -28,7 +30,7 @@ stacks:
   # The 'name' and 'class_path' keys are required.
   # The 'name' value must be unique.
   # The 'class_path' points at a Python stacker "blueprint" class.
-  - name: s3_and_dynamo
+  - name: s3-and-dynamo
     class_path: blueprints.s3_and_dynamo.s3_and_dynamo
     description: This example blueprint will create an s3 bucket and a dynamo table
     enabled: true
