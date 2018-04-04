@@ -30,6 +30,13 @@ stacks:
   # The 'name' and 'class_path' keys are required.
   # The 'name' value must be unique.
   # The 'class_path' points at a Python stacker "blueprint" class.
+  - name: s3-and-cloudfronttest
+    class_path: blueprints.s3_and_cloudfront.s3_and_cloudfront
+    description: This example blueprint will create an s3 bucket and a cloudfront distribution
+    enabled: true
+    variables:
+      << : *general_parameters
+
   - name: s3-and-dynamo
     class_path: blueprints.s3_and_dynamo.s3_and_dynamo
     description: This example blueprint will create an s3 bucket and a dynamo table
@@ -37,9 +44,4 @@ stacks:
     variables:
       << : *general_parameters
 
-    # in this case, if you look in the "blueprints" directory at the file "s3_and_dynamo.py"
-    # you will see a Python class called "s3_and_dynamo".
-
-    # when we execute stacker with this `stack config`, it will automatically run the
-    # blueprint code to produce a CloudFormation JSON template, upload it to s3, and
-    # trigger a CloudFormation create/update.
+ 
