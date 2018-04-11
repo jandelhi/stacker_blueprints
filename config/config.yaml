@@ -30,7 +30,22 @@ stacks:
   # The 'name' and 'class_path' keys are required.
   # The 'name' value must be unique.
   # The 'class_path' points at a Python stacker "blueprint" class.
-  - name: s3-and-cloudfronttest
+
+  - name: es-service-domain
+    class_path: blueprints.es_service_domain.es_service_domain
+    description: This example blueprint will create an elastic service domain
+    enabled: true
+    variables:
+      << : *general_parameters
+
+  - name: ddb-lambda
+    class_path: blueprints.ddb_and_lambda.ddb_and_lambda
+    description: This example blueprint will create a ddb with enabled stream and lambda trigger that saves data to elasticsearch
+    enabled: true
+    variables:
+      << : *general_parameters
+      
+  - name: s3-and-cloudfront
     class_path: blueprints.s3_and_cloudfront.s3_and_cloudfront
     description: This example blueprint will create an s3 bucket and a cloudfront distribution
     enabled: true
